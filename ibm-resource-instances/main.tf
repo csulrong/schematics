@@ -2,11 +2,11 @@ data "ibm_resource_group" "group" {
   name = var.resource_group_name
 }
 
-resource "ibm_resource_instance" "resource_instance" {
-  name              = var.service_name
-  service           = var.service_type
-  plan              = var.plan
-  location          = var.location
+resource "ibm_resource_instance" "cos" {
+  name              = var.cos.instance_name
+  service           = var.cos.service_name
+  plan              = var.cos.plan
+  location          = var.cos.location
   resource_group_id = data.ibm_resource_group.group.id
   tags              = ["friday-you", "experimental", "jet"]
 
