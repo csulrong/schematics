@@ -7,7 +7,7 @@ variable "service_type" {
 }
 
 variable "plan" {
-  default = "lite"
+  default = "standard"
 }
 
 variable "location" {
