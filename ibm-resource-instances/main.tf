@@ -21,3 +21,43 @@ resource "ibm_resource_instance" "cos" {
   }
 }
 
+# CIS instance
+resource "ibm_cis" "cis_instance" {
+  name = var.cis.instance_name
+  plan = var.cis.plan
+  location = var.cis.location
+  resource_group_id = data.ibm_resource_group.group.id
+  tags = ["friday-you", "experimential", "jet"]
+
+  timeouts {
+    create = "15m"
+    update = "15m"
+    delete = "15m"
+  }
+}
+
+resource "ibm_cis_dns_domain" "cis_dns_domain" {
+  cis_id = ibm_cis.cis_instance.id
+  domain = "friday-you.cns-foo.com"
+
+  timeouts {
+    create = "15m"
+    update = "15m"
+    delete = "15m"
+  }
+}
+
+resource "ibm_cis_dns_record" "cis_dns_record" {
+  cis_id = ibm_cis_cis_instance.id
+  domain_id = ibm_cis_dns_domain.cis_dns_domain.id
+  name = var.web.hostname
+  type = "A"
+  content = var.web.address
+  ttl = 120
+
+  timeouts {
+    create = "15m"
+    update = "15m"
+    delete = "15m"
+  }
+}
