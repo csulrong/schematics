@@ -49,7 +49,7 @@ resource "ibm_cis_domain" "cis_domain" {
 
 resource "ibm_cis_dns_record" "cis_dns_record" {
   cis_id = ibm_cis.cis_instance.id
-  domain_id = ibm_cis_dns_domain.cis_domain.id
+  domain_id = ibm_cis_domain.cis_domain.id
   name = var.web.hostname
   type = "A"
   content = var.web.address
