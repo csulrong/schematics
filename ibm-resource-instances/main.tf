@@ -36,7 +36,7 @@ resource "ibm_cis" "cis_instance" {
   }
 }
 
-resource "ibm_cis_dns_domain" "cis_dns_domain" {
+resource "ibm_cis_domain" "cis_domain" {
   cis_id = ibm_cis.cis_instance.id
   domain = "friday-you.cns-foo.com"
 
@@ -48,8 +48,8 @@ resource "ibm_cis_dns_domain" "cis_dns_domain" {
 }
 
 resource "ibm_cis_dns_record" "cis_dns_record" {
-  cis_id = ibm_cis_cis_instance.id
-  domain_id = ibm_cis_dns_domain.cis_dns_domain.id
+  cis_id = ibm_cis.cis_instance.id
+  domain_id = ibm_cis_dns_domain.cis_domain.id
   name = var.web.hostname
   type = "A"
   content = var.web.address
