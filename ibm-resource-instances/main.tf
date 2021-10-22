@@ -39,12 +39,6 @@ resource "ibm_cis" "cis_instance" {
 resource "ibm_cis_domain" "cis_domain" {
   cis_id = ibm_cis.cis_instance.id
   domain = "friday-you.cns-foo.com"
-
-  timeouts {
-    create = "15m"
-    update = "15m"
-    delete = "15m"
-  }
 }
 
 resource "ibm_cis_dns_record" "cis_dns_record" {
@@ -54,9 +48,4 @@ resource "ibm_cis_dns_record" "cis_dns_record" {
   type = "A"
   content = var.web.address
   proxied = true
-  timeouts {
-    create = "15m"
-    update = "15m"
-    delete = "15m"
-  }
 }
