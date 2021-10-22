@@ -53,8 +53,7 @@ resource "ibm_cis_dns_record" "cis_dns_record" {
   name = var.web.hostname
   type = "A"
   content = var.web.address
-  ttl = 120
-
+  proxied = true
   timeouts {
     create = "15m"
     update = "15m"
