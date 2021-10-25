@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="carbon-components.css">
+  <link rel="stylesheet" href="warning_page_styles.css">
+
+  <style>
+    .always_online > ul, .always_online > p, .always_online > h3, .always_online a {
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5rem;
+    }
+
+    .always_online > p {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 100;
+      color: #5A6872;
+      margin-bottom: 2rem;
+    }
+
+    .always_online > ul, .always_online > h3 {
+      text-align: left;
+      max-width: 20rem;
+    }
+    @media (max-width: 955px) {
+      .always_online > p {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="placeholder">
+    ::ALWAYS_ONLINE_NO_COPY_BOX::
+  </div>
+
+  <div class="section-container">
+    <div class="section-item">
+      <h3>What happened?</h3>
+      <p>
+        The page you requested is hosted on IBM Cloud Internet Services and cannot be resolved.<br><br> 
+        This happens when websites are newly configured on IBM CIS, or when something in the site’s configuration is incorrect.
+      </p>
+    </div>
+    <div class="section-item">
+      <h3>What can I do?</h3>
+      <p>
+        If you are a visitor, try again in a few minutes.<br><br>
+        If you are the website owner, check your configurations on CIS and any DNS related services you had been using.
+      </p>
+    </div>
+  </div>
+  <p id="event-specs">
+    Ray ID: ::RAY_ID:: | IP Address: ::CLIENT_IP:: | IBM Cloud Internet Services, Powered by Cloudflare
+  </p>
+</body>
+
+
+
+</html>

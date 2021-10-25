@@ -1,0 +1,52 @@
+<html>
+<head>
+  <link rel="stylesheet" href="carbon-components.css">
+  <link rel="stylesheet" href="warning_page_styles.css">
+  <style type="text/css">
+  /* 500 */
+    .cf-error-details p, .cf-error-details ul {
+      text-align: left;
+      max-width: 30rem;
+      display: inline-block;
+      overflow: hidden;
+      padding: 0rem 2rem;
+      vertical-align: middle;
+    }
+
+    .cf-error-details ul {
+      text-align: left;
+    }
+
+    .cf-error-details ul > li {
+      margin: 1rem 0rem;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="placeholder">
+     ::CLOUDFLARE_ERROR_500S_BOX::
+  </div>
+
+  <div class="section-container">
+    <div class="section-item">
+      <h3>What happened?</h3>
+      <p>
+        The initial connection between IBM Cloud Internet Services network (Powered by Cloudflare) and the origin web server timed out.
+        As a result, the web page can not be displayed.
+      </p>
+    </div>
+    <div class="section-item">
+      <h3>What can I do?</h3>
+      <p>
+        If you are a visitor, try again in a few minutes.<br><br>
+        If you are the website owner, check your configurations on CIS and any DNS related services you had been using.
+      </p>
+    </div>
+  </div>
+  <p id="event-specs">
+    Ray ID: ::RAY_ID:: | IP Address: ::CLIENT_IP:: | IBM Cloud Internet Services, Powered by Cloudflare
+  </p>
+
+</body>
+</html>

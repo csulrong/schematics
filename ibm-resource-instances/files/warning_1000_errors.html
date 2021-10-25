@@ -1,0 +1,47 @@
+<html>
+<head>
+  <link rel="stylesheet" href="carbon-components.css">
+  <link rel="stylesheet" href="warning_page_styles.css">
+
+  <style>
+    .cf-error-details p {
+      text-align: left;
+      max-width: 30rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cf-error-details ul {
+      margin-top: 2rem;
+      text-align: left;
+      max-width: 40%;
+      display: inline-block;
+      padding: 0 2rem;
+      vertical-align: top;
+    }
+
+    .cf-error-details ul > li {
+      margin: 1rem 0rem;
+      line-height: 1.5rem;
+    }
+
+    @media (max-width: 955px) {
+      .cf-error-details ul {
+        display: block;
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+
+  <body>
+    <div class="placeholder">
+      ::CLOUDFLARE_ERROR_1000S_BOX::
+    </div>
+    <p id="event-specs">
+      Ray ID: ::RAY_ID:: | IP Address: ::CLIENT_IP:: | IBM Cloud Internet Services, Powered by Cloudflare
+    </p>
+  </body>
+</html>
