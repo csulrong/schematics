@@ -130,25 +130,11 @@ resource "ibm_cis_custom_page" "basic_challenge" {
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_basic_challenge.html"
 }
 
-resource "ibm_cis_custom_page" "basic_challenge" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "basic_challenge"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_basic_challenge.html"
-}
-
 resource "ibm_cis_custom_page" "country_challenge" {
     cis_id    = ibm_cis.cis_instance.id
     domain_id = ibm_cis_domain.cis_domain.id
     page_id   = "country_challenge"
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_country_challenge.html"
-}
-
-resource "ibm_cis_custom_page" "ip_block" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "ip_block"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_ip_block.html"
 }
 
 resource "ibm_cis_custom_page" "ip_block" {
@@ -165,14 +151,14 @@ resource "ibm_cis_custom_page" "serve_stale_content" {
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_always_online.html"
 }
 
-resource "ibm_cis_custom_page" "1000_errors" {
+resource "ibm_cis_custom_page" "warining_1000_errors" {
     cis_id    = ibm_cis.cis_instance.id
     domain_id = ibm_cis_domain.cis_domain.id
     page_id   = "1000_errors"
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_1000_errors.html"
 }
 
-resource "ibm_cis_custom_page" "500_errors" {
+resource "ibm_cis_custom_page" "warining_500_errors" {
     cis_id    = ibm_cis.cis_instance.id
     domain_id = ibm_cis_domain.cis_domain.id
     page_id   = "500_errors"
