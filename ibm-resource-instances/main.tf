@@ -33,65 +33,65 @@ resource "ibm_cos_bucket" "cos_bucket" {
 resource "ibm_cos_bucket_object" "carbon_components_css" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/carbon-components.css"
+  content_file    = "${path.cwd}/files/carbon-components.css"
   key             = "carbon-components.css"
-  etag            = filemd5("${path.module}/files/carbon-components.css")
+  etag            = filemd5("${path.cwd}/files/carbon-components.css")
 }
 
 resource "ibm_cos_bucket_object" "warning_page_styles_css" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_page_styles.css"
+  content_file    = "${path.cwd}/files/warning_page_styles.css"
   key             = "warning_page_styles.css"
-  etag            = filemd5("${path.module}/files/warning_page_styles.css")
+  etag            = filemd5("${path.cwd}/files/warning_page_styles.css")
 }
 
 resource "ibm_cos_bucket_object" "warning_1000_errors" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_1000_errors.html"
+  content_file    = "${path.cwd}/files/warning_1000_errors.html"
   key             = "warning_1000_errors.html"
-  etag            = filemd5("${path.module}/files/warning_1000_errors.html")
+  etag            = filemd5("${path.cwd}/files/warning_1000_errors.html")
 }
 
 resource "ibm_cos_bucket_object" "warning_500_errors" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_500_errors.html"
+  content_file    = "${path.cwd}/files/warning_500_errors.html"
   key             = "warning_500_errors.html"
-  etag            = filemd5("${path.module}/files/warning_500_errors.html")
+  etag            = filemd5("${path.cwd}/files/warning_500_errors.html")
 }
 
 resource "ibm_cos_bucket_object" "warning_always_online" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_always_online.html"
+  content_file    = "${path.cwd}/files/warning_always_online.html"
   key             = "warning_always_online.html"
-  etag            = filemd5("${path.module}/files/warning_always_online.html")
+  etag            = filemd5("${path.cwd}/files/warning_always_online.html")
 }
 
 resource "ibm_cos_bucket_object" "warning_basic_challenge" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_basic_challenge.html"
+  content_file    = "${path.cwd}/files/warning_basic_challenge.html"
   key             = "warning_basic_challenge.html"
-  etag            = filemd5("${path.module}/files/warning_basic_challenge.html")
+  etag            = filemd5("${path.cwd}/files/warning_basic_challenge.html")
 }
 
 resource "ibm_cos_bucket_object" "warning_country_challenge" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_country_challenge.html"
+  content_file    = "${path.cwd}/files/warning_country_challenge.html"
   key             = "warning_country_challenge.html"
-  etag            = filemd5("${path.module}/files/warning_country_challenge.html")
+  etag            = filemd5("${path.cwd}/files/warning_country_challenge.html")
 }
 
 resource "ibm_cos_bucket_object" "warning_ip_block" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/files/warning_ip_block.html"
+  content_file    = "${path.cwd}/files/warning_ip_block.html"
   key             = "warning_ip_block.html"
-  etag            = filemd5("${path.module}/files/warning_ip_block.html")
+  etag            = filemd5("${path.cwd}/files/warning_ip_block.html")
 }
 
 # CIS instance
@@ -144,10 +144,10 @@ resource "ibm_cis_custom_page" "ip_block" {
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_ip_block.html"
 }
 
-resource "ibm_cis_custom_page" "serve_stale_content" {
+resource "ibm_cis_custom_page" "always_online" {
     cis_id    = ibm_cis.cis_instance.id
     domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "serve_stale_content"
+    page_id   = "always_online"
     url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_always_online.html"
 }
 
