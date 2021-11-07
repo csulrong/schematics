@@ -90,7 +90,7 @@ resource "ibm_cis_page_rule" "images_page_rule" {
 
   actions {
     id = "resolve_override"
-    vaule = "images.friday-you.cns-foo.com"
+    value = "images.friday-you.cns-foo.com"
   }
 
   actions {
