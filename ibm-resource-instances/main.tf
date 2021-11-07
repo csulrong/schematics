@@ -30,68 +30,13 @@ resource "ibm_cos_bucket" "cos_bucket" {
   storage_class = var.cos.bucket_storage_class
 }
 
-# resource "ibm_cos_bucket_object" "carbon_components_css" {
-#   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-#   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-#   content_file    = "${path.module}/carbon-components.css"
-#   key             = "carbon-components.css"
-#   etag            = filemd5("${path.module}/carbon-components.css")
-# }
-
-# resource "ibm_cos_bucket_object" "warning_page_styles_css" {
-#   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-#   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-#   content_file    = "${path.module}/warning_page_styles.css"
-#   key             = "warning_page_styles.css"
-#   etag            = filemd5("${path.module}/warning_page_styles.css")
-# }
-
-resource "ibm_cos_bucket_object" "warning_1000_errors" {
+resource "ibm_cos_bucket_object" "ibm_logo" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
   bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_1000_errors.html"
-  key             = "warning_1000_errors.html"
-  etag            = filemd5("${path.module}/warning_1000_errors.html")
-}
-
-resource "ibm_cos_bucket_object" "warning_500_errors" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_500_errors.html"
-  key             = "warning_500_errors.html"
-  etag            = filemd5("${path.module}/warning_500_errors.html")
-}
-
-resource "ibm_cos_bucket_object" "warning_always_online" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_always_online.html"
-  key             = "warning_always_online.html"
-  etag            = filemd5("${path.module}/warning_always_online.html")
-}
-
-resource "ibm_cos_bucket_object" "warning_basic_challenge" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_basic_challenge.html"
-  key             = "warning_basic_challenge.html"
-  etag            = filemd5("${path.module}/warning_basic_challenge.html")
-}
-
-resource "ibm_cos_bucket_object" "warning_country_challenge" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_country_challenge.html"
-  key             = "warning_country_challenge.html"
-  etag            = filemd5("${path.module}/warning_country_challenge.html")
-}
-
-resource "ibm_cos_bucket_object" "warning_ip_block" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_ip_block.html"
-  key             = "warning_ip_block.html"
-  etag            = filemd5("${path.module}/warning_ip_block.html")
+  endpoint_type   = "public"
+  content_file    = "${path.module}/ibm.png"
+  key             = "ibm.png"
+  etag            = filemd5("${path.module}/ibm.png")
 }
 
 # CIS instance
@@ -123,44 +68,33 @@ resource "ibm_cis_dns_record" "cis_dns_record" {
   proxied = true
 }
 
-resource "ibm_cis_custom_page" "basic_challenge" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "basic_challenge"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_basic_challenge.html"
+resource "ibm_cis_dns_record" "cis_image_record" {
+  cis_id = ibm_cis.cis_instance.id
+  domain_id = ibm_cis_domain.cis_domain.id
+  name = "images.friday-you.cns-foo.com"
+  type = "CNAME"
+  content = "s3.us-south.cloud-object-storage.appdomain.cloud"
+  proxied = true
 }
 
-resource "ibm_cis_custom_page" "country_challenge" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "country_challenge"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_country_challenge.html"
-}
+resource "ibm_cis_page_rule" "images_page_rule" {
+  cis_id = ibm_cis.cis_instance.id
+  domain_id = ibm_cis_domain.cis_domain.id
+  targets {
+    target = "url"
+    constraint {
+      operator = "matches"
+      value = "friday-you.cns-foo.com/friday-you-images/*"
+    }
+  }
 
-resource "ibm_cis_custom_page" "ip_block" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "ip_block"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_ip_block.html"
-}
+  actions {
+    id = "resolve_override"
+    vaule = "images.friday-you.cns-foo.com"
+  }
 
-resource "ibm_cis_custom_page" "always_online" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "always_online"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_always_online.html"
-}
-
-resource "ibm_cis_custom_page" "warining_1000_errors" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "1000_errors"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_1000_errors.html"
-}
-
-resource "ibm_cis_custom_page" "warining_500_errors" {
-    cis_id    = ibm_cis.cis_instance.id
-    domain_id = ibm_cis_domain.cis_domain.id
-    page_id   = "500_errors"
-    url       = "https://s3.us-south.cloud-object-storage.appdomain.cloud/cis-custom-pages/warning_500_errors.html"
+  actions {
+    id = "host_header_override"
+    value = "s3.us-south.cloud-object-storage.appdomain.cloud"
+  }
 }

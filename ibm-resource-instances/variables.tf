@@ -18,7 +18,7 @@ variable "cos" {
     instance_name = "friday-you-object-storage-jet"
     plan = "standard"
     location = "global"
-    bucket_name = "cis-custom-pages"
+    bucket_name = "friday-you-images"
     bucket_location = "us-south"
     bucket_storage_class = "smart"
   }
