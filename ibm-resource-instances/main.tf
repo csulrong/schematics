@@ -30,21 +30,21 @@ resource "ibm_cos_bucket" "cos_bucket" {
   storage_class = var.cos.bucket_storage_class
 }
 
-resource "ibm_cos_bucket_object" "carbon_components_css" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/carbon-components.css"
-  key             = "carbon-components.css"
-  etag            = filemd5("${path.module}/carbon-components.css")
-}
+# resource "ibm_cos_bucket_object" "carbon_components_css" {
+#   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
+#   bucket_location = ibm_cos_bucket.cos_bucket.region_location
+#   content_file    = "${path.module}/carbon-components.css"
+#   key             = "carbon-components.css"
+#   etag            = filemd5("${path.module}/carbon-components.css")
+# }
 
-resource "ibm_cos_bucket_object" "warning_page_styles_css" {
-  bucket_crn      = ibm_cos_bucket.cos_bucket.crn
-  bucket_location = ibm_cos_bucket.cos_bucket.region_location
-  content_file    = "${path.module}/warning_page_styles.css"
-  key             = "warning_page_styles.css"
-  etag            = filemd5("${path.module}/warning_page_styles.css")
-}
+# resource "ibm_cos_bucket_object" "warning_page_styles_css" {
+#   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
+#   bucket_location = ibm_cos_bucket.cos_bucket.region_location
+#   content_file    = "${path.module}/warning_page_styles.css"
+#   key             = "warning_page_styles.css"
+#   etag            = filemd5("${path.module}/warning_page_styles.css")
+# }
 
 resource "ibm_cos_bucket_object" "warning_1000_errors" {
   bucket_crn      = ibm_cos_bucket.cos_bucket.crn
