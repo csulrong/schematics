@@ -34,8 +34,8 @@ variable "cis" {
   })
   default = {
     service_name = "cloud-internet-services"
-    instance_name = "friday-you-cloud-internet-services-jet"
-    plan = "standard"
+    instance_name = "friday-you-cis-jet"
+    plan = "trial"
     location = "global"
     domain_name = "friday-you.cns-foo.com"
   }
