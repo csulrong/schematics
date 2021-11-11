@@ -97,3 +97,9 @@ resource "ibm_cis_page_rule" "images_page_rule" {
   }
   status = "active"
 }
+
+resource "ibm_cis_domain_settings" "ssl_flexible" {
+  cis_id = ibm_cis.cis_instance.id
+  domain_id = ibm_cis_domain.cis_domain.id
+  ssl       = "flexible"
+}
