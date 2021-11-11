@@ -49,6 +49,6 @@ variable "web" {
 
   default = {
     hostname = "friday-you.cns-foo.com"
-    address = "169.59.214.74"
+    address = "150.238.49.45"
   }
 }
