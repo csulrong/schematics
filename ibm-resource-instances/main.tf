@@ -87,14 +87,13 @@ resource "ibm_cis_page_rule" "images_page_rule" {
       value = "friday-you.cns-foo.com/friday-you-images/*"
     }
   }
-
   actions {
     id = "resolve_override"
     value = "images.friday-you.cns-foo.com"
   }
-
   actions {
     id = "host_header_override"
     value = "s3.us-south.cloud-object-storage.appdomain.cloud"
   }
+  status = "active"
 }

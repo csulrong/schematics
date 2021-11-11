@@ -1,0 +1,5 @@
+[webserver]
+ws01 ansible_host=150.238.49.45 ansible_user=root
+[webserver:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ProxyCommand="ssh -W %h:%p -q root@150.238.49.45 -o StrictHostKeyChecking=no -o ConnectTimeout=60s"'
+ansible_timeout=60

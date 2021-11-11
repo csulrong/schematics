@@ -1,0 +1,27 @@
+---
+# This task updates apt cache and installs nginx
+
+- name: Update apt cache and install Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+  
+# - name: Apply Nginx template
+#   template:
+#     src: templates/nginx.conf.j2
+#     dest: /etc/nginx/sites-available/default
+#   notify: Restart Nginx
+
+# - name: Enable new site
+#   file:
+#     src: /etc/nginx/sites-available/default
+#     dest: /etc/nginx/sites-enabled/default
+#     state: link
+#   notify: Restart Nginx
+
